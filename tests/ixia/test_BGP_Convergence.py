@@ -88,7 +88,7 @@ def test_bgp_convergence(duthost,snappi_api,tgen_ports):
         config.devices[0].ethernet.ipv4.name='IPv4 1'
         config.devices[0].ethernet.ipv4.address.value=tgen_ports[0]['ip']
         config.devices[0].ethernet.ipv4.gateway.value=tgen_ports[0]['peer_ip']
-        config.devices[0].ethernet.ipv4.prefix.value=24
+        config.devices[0].ethernet.ipv4.prefix.value=tgen_ports[0]['prefix']
         rx_flow_name=[]
         for i in range(2,PORT_COUNT+1):
             Ethernet=config.devices[i-1].ethernet
@@ -97,7 +97,7 @@ def test_bgp_convergence(duthost,snappi_api,tgen_ports):
             IPv4.name='IPv4 %d'%i
             IPv4.address.value=tgen_ports[i-1]['ip']
             IPv4.gateway.value=tgen_ports[i-1]['peer_ip']
-            IPv4.prefix.value=31
+            IPv4.prefix.value=tgen_ports[i]['prefix']
             BGPv4=IPv4.bgpv4
             BGPv4.name='BGP %d'%i
             BGPv4.as_type=BGP_TYPE
