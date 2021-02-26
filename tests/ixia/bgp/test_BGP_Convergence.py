@@ -197,7 +197,6 @@ def test_bgp_convergence(duthost,snappi_api,tgen_ports):
     #Running link flap test on all the rx ports
     for i in range(0,len(rx_port_names)):
         table.append(getAvgDPDPConvergenceTime(rx_port_names[i],flap_iterations))
-    #table.append(getAvgDPDPConvergenceTime(rx_port_names[0],flap_iterations))
     columns=['Event Name','Iterations','Avg Calculated DP/DP Convergence Time(ms)']
     logger.info("\n%s" % tabulate(table,headers=columns,tablefmt="psql"))
 
